@@ -1,5 +1,6 @@
 {
   "name": "portfolio-server",
+  "homepage": "http://node-server-mail-sender.vercel.app/",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
