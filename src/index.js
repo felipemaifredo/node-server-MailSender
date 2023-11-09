@@ -11,10 +11,8 @@ server.get('/', (req, res) => {
 })
 
 server.post('/send-email/:email', (req, res) => {
-    
     let formData = req.body;
     let recipientEmail = req.params.email;
-    
     sendEmail(formData, recipientEmail).then(message => {
             res.status(200).send(message); 
         }).catch(err => {

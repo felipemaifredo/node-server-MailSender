@@ -6,7 +6,6 @@ const pass = process.env.DB_PASS;
 
 const sendEmail = async (formData, recipientEmail) => {
     let { name, email, message } = formData;
-
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
