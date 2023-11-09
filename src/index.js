@@ -6,6 +6,8 @@ require('dotenv').config();
 const server = express();
 server.use(bodyParser.urlencoded({ extended: true }));
 
+const port = process.env.PORT || 3000
+
 server.get('/', (req, res) => {
     return res.json({mensagem: 'Server is running!'})
 })
@@ -20,6 +22,6 @@ server.post('/send-email/:email', (req, res) => {
         });
 });
 
-server.listen(process.env.PORT || 3000, () => {
+server.listen(port, () => {
     console.log('Server is running');
 });
