@@ -22,7 +22,7 @@ const sendEmail = async (formData, recipientEmail) => {
         to: recipientEmail,
         subject: 'Novo Contato Recebito!',
         text: message,
-        html: `<P>a Pessoa ${name}, enviou: ${message}, o email dele é: ${email}<p>`
+        html: `<P style="color: red;">a Pessoa ${name}, enviou: ${message}, o email dele é: ${email}<p>`
     });
 
     try {
