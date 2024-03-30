@@ -30,7 +30,7 @@ const sendEmail = async (formData, recipientEmail) => {
         text: message,
         html: `
             <div style="background-color: black">
-                <p> 
+                <p style="color: white">
                     a Pessoa ${name}, enviou: ${message}, o email dele é: ${email}
                 </p>
             <div>
