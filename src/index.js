@@ -29,7 +29,7 @@ const sendEmail = async (formData, recipientEmail) => {
         subject: 'Novo Contato Recebito!',
         text: message,
         html: `
-            <div background-color: black">
+            <div style="background-color: black">
                 <p> 
                     a Pessoa ${name}, enviou: ${message}, o email dele é: ${email}
                 </p>
