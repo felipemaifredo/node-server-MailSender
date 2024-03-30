@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000
 
 const sendEmail = async (formData, recipientEmail) => {
     let { name, email, message } = formData
-    
+
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -28,7 +28,13 @@ const sendEmail = async (formData, recipientEmail) => {
         to: recipientEmail,
         subject: 'Novo Contato Recebito!',
         text: message,
-        html: `<P style="color: red">a Pessoa ${name}, enviou: ${message}, o email dele é: ${email}<p>`
+        html: `
+            <div background-color: black">
+                <p> 
+                    a Pessoa ${name}, enviou: ${message}, o email dele é: ${email}
+                </p>
+            <div>
+        `
     })
 
     try {
@@ -37,11 +43,11 @@ const sendEmail = async (formData, recipientEmail) => {
             success: true,
             message: 'E-mail enviado com sucesso!'
         }
-    } catch(err) {
+    } catch (err) {
         return {
             success: false,
             message: `Erro ao enviar o e-mail. ${err}`
-        } 
+        }
     }
 }
 
@@ -65,10 +71,10 @@ server.post('/send-email/:email', (req, res) => {
     let formData = req.body
     let recipientEmail = req.params.email
     sendEmail(formData, recipientEmail).then(message => {
-            res.status(200).send(message) 
-        }).catch(err => {
-            res.status(500).send(err)
-        })
+        res.status(200).send(message)
+    }).catch(err => {
+        res.status(500).send(err)
+    })
 })
 
 server.listen(port, () => {
