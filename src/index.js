@@ -42,7 +42,10 @@ server.post("/send-email/:email", (req, res) => {
 
     // Verifica se há campos no formulário
     if (Object.keys(formData).length === 0) {
-        return res.status(400).json({ message: "Nenhum campo foi enviado." })
+        return res.status(400).json({ 
+            success: false,
+            message: "Nenhum campo foi enviado." 
+        })
     }
 
     // Itera sobre os campos recebidos no corpo da requisição
