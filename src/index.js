@@ -1,16 +1,13 @@
-const express = require("express")
+require("dotenv").config()
 const bodyParser = require("body-parser")
 const nodemailer = require("nodemailer")
-const { validationResult, check } = require("express-validator")
-require("dotenv").config()
-
+const express = require("express")
+const server = express()
 const user = process.env.DB_USER
 const pass = process.env.DB_PASS
-
-const server = express()
-server.use(bodyParser.urlencoded({ extended: true }))
-
 const port = process.env.PORT || 3000
+
+server.use(bodyParser.urlencoded({ extended: true }))
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -22,7 +19,7 @@ const transporter = nodemailer.createTransport({
     }
 })
 
-server.get("/", (req, res) => {
+server.get("/", (_req, res) => {
     const htmlContent = `
         <!DOCTYPE html>
         <html>
@@ -41,11 +38,11 @@ server.get("/", (req, res) => {
 server.post("/send-email/:email", (req, res) => {
     const formData = req.body
     const recipientEmail = req.params.email
-    let mailBody = ''; // Inicializa o corpo do e-mail
+    let mailBody = "" // Inicializa o corpo do e-mail
 
     // Verifica se há campos no formulário
     if (Object.keys(formData).length === 0) {
-        return res.status(400).json({ message: 'Nenhum campo foi enviado.' });
+        return res.status(400).json({ message: "Nenhum campo foi enviado." })
     }
 
     // Itera sobre os campos recebidos no corpo da requisição
@@ -81,7 +78,7 @@ server.post("/send-email/:email", (req, res) => {
     })
 })
 
-server.use((req, res) => {
+server.use((_req, res) => {
     res.status(404).send("Página não encontrada")
 })
 
