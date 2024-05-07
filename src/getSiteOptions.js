@@ -27,10 +27,11 @@ function getSiteOptions(req, res) {
 
     // Verifica se o domínio está mapeado
     if (domain in siteConfigs) {
-        return siteConfigs[domain]
+        return res.status(200).json({ success: true, siteOptions: siteConfigs[domain] })
+        
     } else {
         // Domínio não encontrado
-        return { error: "Dominio não encontrado" }
+        return res.status(500).json({ success: false, error: "Dominio não encontrado" })
     }
 }
 

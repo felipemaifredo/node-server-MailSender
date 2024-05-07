@@ -1,18 +1,13 @@
+const sendEmail = require("./sendEmail")
+const getSiteOptions = require("./getSiteOptions")
 require("dotenv").config()
 const bodyParser = require("body-parser")
 const express = require("express")
 const server = express()
 
-const sendEmail = require("./sendEmail")
-const getSiteOptions = require("./getSiteOptions")
-
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 
 server.use(bodyParser.urlencoded({ extended: true }))
-
-server.use((_req, res) => {
-    res.status(404).send("Página não encontrada")
-})
 
 server.get("/", (_req, res) => {
     const htmlContent = `
@@ -30,11 +25,12 @@ server.get("/", (_req, res) => {
     res.send(htmlContent)
 })
 
-server.get("/ebordados-next/get-site-options/:domain", getSiteOptions)
-
-//server.get("/ebordados-next/get-user/:user", sendEmail)
-
 server.post("/send-email/:email", sendEmail)
+server.get("/ebordados-next/get-side-options/:domain", getSiteOptions)
+
+server.use((_req, res) => {
+    res.status(404).send("Página não encontrada")
+})
 
 server.listen(port, () => {
     console.log("Server is running")
