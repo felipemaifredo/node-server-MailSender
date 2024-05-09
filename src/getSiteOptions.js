@@ -65,7 +65,6 @@ function getSiteOptions(req, res) {
                 sixty: { key: '--c-sixty', color: '#000' },
                 seventy: { key: '--c-seventy', color: '#000' }
             },
-            colors: ["#ff00ff", "#00ffff"],
             products: ["product7", "product8", "product9"]
         },
     }
