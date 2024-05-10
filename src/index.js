@@ -1,5 +1,7 @@
 const sendEmail = require("./sendEmail")
 const getSiteOptions = require("./getSiteOptions")
+const verifyUser = require("./verifyUser")
+
 require("dotenv").config()
 const bodyParser = require("body-parser")
 const express = require("express")
@@ -27,6 +29,7 @@ server.get("/", (_req, res) => {
 
 server.post("/send-email/:email", sendEmail)
 server.get("/ebordados-next/get-side-options/:domain", getSiteOptions)
+server.post("/ebordados-next/get-user", verifyUser)
 
 server.use((_req, res) => {
     res.status(404).send("Página não encontrada")
