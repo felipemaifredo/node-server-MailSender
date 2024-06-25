@@ -41,7 +41,7 @@ function getSiteOptions(req, res) {
                 lang: "en", classToCss: "emb",
             },
             colors: {
-                primary: { key: '--c-primary', color: '#0069d9' },
+                primary: { key: '--c-primary', color: '#fe0000' },
                 secondary: { key: '--c-secondary', color: '#ff8531' },
                 third: { key: '--c-third', color: '#9f9d96' },
                 fourty: { key: '--c-fourty', color: '#f0efe9' },
